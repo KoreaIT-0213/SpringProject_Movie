@@ -13,5 +13,4 @@ public class LocationController {
 		return Common.Location.VIEW_PATH + "location.jsp";
 	}
 	
-	
 }

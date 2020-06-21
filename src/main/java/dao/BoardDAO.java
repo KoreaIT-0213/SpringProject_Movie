@@ -51,20 +51,11 @@ public class BoardDAO {
 		return content;
 	}
 	
-	
-	
 	//게시글 추가
 	public int insert( BoardVO vo ) {
-		
-	//HashMap<Object, Object> map = new HashMap<Object, Object>();
-	//map.put("vo", vo);
-	//map.put("scope", scope);
-	
-		
+
 	int res = sqlSession.insert("b.board_insert", vo);
-	
 	return res;
-			
 	}
 	
 	//게시글 수정하기 위해 정보 하나 얻어오기

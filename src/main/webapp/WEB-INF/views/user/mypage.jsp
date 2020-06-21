@@ -81,6 +81,23 @@ div::-webkit-scrollbar {
 }
 
 
+
+.box_ticketed{
+	background:#fff;
+	width:500px;
+	display:inline;
+}
+
+.box_reviewed{
+	background:#fff;
+	width:500px;
+	display:inline;
+}
+
+.ticketing_box{
+	background: #red;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -96,23 +113,18 @@ window.onload=function(){
 		if( xhr.readyState == 4 && xhr.status == 200 ){
 		    var data = xhr.responseText;
 			var json=eval(data);
-			var div =document.getElementById("ticket");
+			var mypage_ticketing_box = document.getElementById("mypage_ticketing_box");
 			for(var i = 0 ; i < json.length ; i++){
-				var indiv = document.createElement("div");
 		    	var p = document.createElement("p");
 		    	p.style.float="left";
-		    	
 		    	p.innerHTML="티켓번호:"+json[i].t_idx+" / 영화 :"+json[i].m_name+" / 좌석 : "+json[i].seat+"/ 상영관 :"+json[i].city+" "+json[i].district+"/ 시간 :"+(json[i].time).substring(0,16)+"/ 결재금액:"+json[i].pay_money+"원";
-		    	//alert(p.innerHTML);
-		    	indiv.appendChild(p);
-				div.appendChild(indiv);
+		    	mypage_ticketing_box.appendChild(p);
 			}
 			if(json.length==0){
-				var indiv = document.createElement("div");
+				
 		    	var p = document.createElement("p"); 
-		    	p.innerHTML="예약한 티켓이 없습니다..."
-		    		indiv.appendChild(p);
-				div.appendChild(indiv);
+		    	p.innerHTML="예약한 티켓이 없습니다...";
+		    	mypage_ticketing_box.appendChild(p);
 			}
 			review();
 		}
@@ -129,22 +141,17 @@ window.onload=function(){
 		    var data = xhr.responseText;
 			var json=eval(data);
 		
-			var div =document.getElementById("myReview");
+			var mypage_myReview_box = document.getElementById("mypage_myReview_box");
 			for(var i = 0 ; i < json.length ; i++){
-				var indiv = document.createElement("div");
 		    	var p = document.createElement("p");
 		    	p.style.float="left";
 		    	p.innerHTML="영화 제목:"+json[i].m_name+" / 평 :"+json[i].content+" / 평점 : "+json[i].scope+"/작성일 :"+json[i].regdate;
-		    	//alert(p.innerHTML);
-		    	indiv.appendChild(p);
-				div.appendChild(indiv);
+		    	mypage_myReview_box.appendChild(p);
 			}
 			if(json.length==0){
-				var indiv = document.createElement("div");
 		    	var p = document.createElement("p");
-		    	p.innerHTML="리뷰를 작성한 내용이 없습니다..."
-		    		indiv.appendChild(p);
-				div.appendChild(indiv);
+		    	p.innerHTML="리뷰를 작성한 내용이 없습니다...";
+		    	mypage_myReview_box.appendChild(p);
 			}
 		}
 	}
@@ -153,25 +160,38 @@ window.onload=function(){
 </head>
 <body>
 
-  <jsp:include page="../header.jsp"/>
-  <div style="width:100% ;height:600px  ;margin:300px auto ;overflow: hidden;position: absolute;" align="center">
+	<jsp:include page="../header.jsp"/>
+	<div style="width:100% ;height:600px  ;margin:300px auto ;overflow: hidden;position: absolute;" align="center">
  
-	 <P style="width:80%; height:50px; background:rgb(119, 119, 119, 0.3); color:white; border-radius:20px; text-align:center; font-size:20px; font-weight:bold; line-height:50px;">${ sessionScope.user.name }님 환영합니다</P>
-	 <div>
-	  <a href="change_info_form.do" class="modify">회원정보 변경</a>
-	  <a href="confirm_pwd.do?l_idx=${param.l_idx}" class="modify">회원 탈퇴</a>
-	 </div>
+	<P style="width:80%; height:50px; background:rgb(119, 119, 119, 0.3); color:white; border-radius:20px; text-align:center; font-size:20px; font-weight:bold; line-height:50px;">${ sessionScope.user.name }님 환영합니다</P>
 	
-	 <P style="width:80%; height:50px; background:rgb(119, 119, 119, 0.3); color:white; border-radius:20px; text-align:center; font-size:20px; font-weight:bold; line-height:50px;">영화 예매 내역</P>
- 	
- 	 <div id= "ticket" style="overflow:scroll;overflow-x:hidden; width:80%; height:100px;background-color:#F4F1E5;border-radius: 8px;">
- 		
- 	 </div>
- 	
- 	<P style="width:80%; height:50px; background:rgb(119, 119, 119, 0.3); color:white; border-radius:20px; text-align:center; font-size:20px; font-weight:bold; line-height:50px;">리뷰 작성</P>
- 	 <div id="myReview"  style="overflow:scroll;overflow-x:hidden; width:80%; height:100px;background-color:#F4F1E5;border-radius: 8px;">
- 		
- 	 </div>
+	<div>
+		<a href="change_info_form.do" class="modify">회원정보 변경</a>
+		<a href="confirm_pwd.do?l_idx=${param.l_idx}" class="modify">회원 탈퇴</a>
+	</div>
+	
+
+	<P style="width:25%; height:50px; background:rgb(119, 119, 119, 0.3); color:white; border-radius:20px; text-align:center; font-size:20px; font-weight:bold; line-height:50px;  margin-bottom:10px;">영화 예매 내역</P>
+ 	<div id="mypage_ticketing_box" style="display:inline; overflow:scroll;overflow-x:hidden; width:25%; height:200px;background-color:#F4F1E5;border-radius: 8px;"></div>
+
+	<P style="width:25%; height:50px; background:rgb(119, 119, 119, 0.3); color:white; border-radius:20px; text-align:center; font-size:20px; font-weight:bold; line-height:50px; margin-bottom:10px;">리뷰 작성</P>
+	<div id="mypage_myReview_box"  style="overflow:scroll;overflow-x:hidden; width:25%; height:200px;background-color:#F4F1E5;border-radius: 8px;"></div> 
+
+	
+	
+	 <!-- <div id="box_T_and_R">
+	 	<div class="box_ticketed">
+			<P style="width:500px; height:50px; background:rgb(119, 119, 119, 0.3); color:white; border-radius:20px; text-align:center; font-size:20px; font-weight:bold; line-height:50px;  margin-bottom:10px;">영화 예매 내역</P>
+		 	<div id= "ticket" style="overflow:scroll;overflow-x:hidden; width:25%; height:200px;background-color:#F4F1E5;border-radius: 8px;"></div>
+	 	</div>
+	 	
+	 	<div class="box_reviewed">
+	 		<P style="width:25%; height:50px; background:rgb(119, 119, 119, 0.3); color:white; border-radius:20px; text-align:center; font-size:20px; font-weight:bold; line-height:50px; margin-bottom:10px;">리뷰 작성</P>
+	 		<div id="myReview"  style="overflow:scroll;overflow-x:hidden; width:25%; height:200px;background-color:#F4F1E5;border-radius: 8px;"></div> 
+	 	</div>
+	 </div> -->
+	 
+	 
  </div>
  
  

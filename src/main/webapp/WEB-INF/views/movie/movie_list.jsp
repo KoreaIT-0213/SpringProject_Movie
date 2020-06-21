@@ -146,7 +146,7 @@
            return posters;
       }
       
-      //성영 예정작 목록을 가져오는 함수
+      //상영 예정작 목록을 가져오는 함수
       function load_release_list(){
          //192.168.1.101:9090/vs/list.do
          var url ='http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp';
@@ -208,7 +208,7 @@
          return location.href="movieInfoDetail.do?movieId="+movieId+"&movieSeq="+movieSeq+"&m_name="+encodeURIComponent(m_name);
       }
       
-      //------------------rank----------------------------------------------------------
+      //--------------------------BoxOffice------------------------------------
       function loading_del(){
           var loadingText = document.getElementById("loadingText");
          if( loadingText.children[0] != undefined ){
@@ -275,7 +275,7 @@
       }
       
       function detailRank( releaseDts, title, trailer ){
-         return location.href="movieInfoDetailRank.do?releaseDts="+releaseDts+"&title="+encodeURIComponent(title)+"&trailer="+trailer;
+         return location.href="movieInfoDetailBoxOffice.do?releaseDts="+releaseDts+"&title="+encodeURIComponent(title)+"&trailer="+trailer;
       }
       //---------------------query---------------------------------------------------
       //쿠키 생성
