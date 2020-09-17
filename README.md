@@ -3,16 +3,15 @@
 
 해당 데이터들은 MovieWep은 영화진흥위원회의 일일박스오피스 OPEN API, 한국영화데이터베이스(KMDb)의 영화상세정보 API와 ORACLE DB를 이용하였다.
 
+## Used Stack
+<img src="https://user-images.githubusercontent.com/57824259/92557660-ad596a80-f2a7-11ea-92dd-10a08b9d2d88.png" alt="Spring" width="50" height="50"/> <img src="https://user-images.githubusercontent.com/57824259/92557770-e8f43480-f2a7-11ea-89ec-0f028d0d3399.png" alt="JAVA" width="50" height="50"/>
+<img src="https://user-images.githubusercontent.com/57824259/92557439-2dcb9b80-f2a7-11ea-9a71-849869c20c78.png" alt="Oracle DB" width="50" height="50"/>
+
 ## screen shot
 <div>
   <img class="Home" width="1000" alt="Home" title="movieHome"
        src="https://user-images.githubusercontent.com/57824259/84159610-39d96e80-aaa8-11ea-88fe-e8d4618566d3.PNG">
 </div>
-
-## Use
-<img src="https://user-images.githubusercontent.com/57824259/92557660-ad596a80-f2a7-11ea-92dd-10a08b9d2d88.png" alt="Spring" width="50" height="50"/> <img src="https://user-images.githubusercontent.com/57824259/92557770-e8f43480-f2a7-11ea-89ec-0f028d0d3399.png" alt="JAVA" width="50" height="50"/>
-<img src="https://user-images.githubusercontent.com/57824259/92557439-2dcb9b80-f2a7-11ea-9a71-849869c20c78.png" alt="Oracle DB" width="50" height="50"/>
-
 
 ## 코드 리뷰
 코드리뷰(Code Review)는 언제나 환영입니다. 😊
