@@ -5,6 +5,12 @@
 [![Downloads Stats][npm-downloads]][npm-url]
 
 한 두 문단으로 프로젝트 소개 글을 작성합니다.
+
+### 긴급
+
+openapi 이용이 제한되어 상영 예정작 수정이 필요  
+
+
 ## screen shot
 <div>
   <img class="Home" width="1000" alt="Home" title="movieHome"

@@ -26,13 +26,12 @@
 	<!-- 컨트롤러 수동 생성시 autowired사용 가능하게 하는 속성 -->
 	<context:annotation-config/>
 	
-	<!-- MovieListController 수동생성 -->
+	<!-- 수동생성 -->
 	<beans:bean class="com.korea.movie.MovieListController"> 
-		<beans:property name="movieListDAO" ref="movie_daoBean"/>
-		<beans:property name="board_dao" ref="board_daoBean"/> 
+		<beans:property name="movieListDAO" ref="movie_daoBean"/>   
 	</beans:bean>
 	
-	<!-- TicketController 수동생성 -->
+	<!-- TicketController -->
 	<beans:bean class="com.korea.movie.TicketController">
 			<beans:constructor-arg ref="theaterdao_Bean"/>
 			<beans:constructor-arg ref="ticketdao_Bean"/>
