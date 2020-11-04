@@ -23,4 +23,4 @@
   <img class="movielist3" width="700" alt="movielist3" title="movielist3" src="https://user-images.githubusercontent.com/57824259/98099922-839d7800-1ed3-11eb-8a5c-7b65a8579ea0.png">
 </div>
 
-### etc
+### etc.. 직접 클릭 후 확인 가능!
