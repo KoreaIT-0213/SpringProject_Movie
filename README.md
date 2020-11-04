@@ -4,7 +4,7 @@
 ### 공지
 Date관련 에러 수정 완료.
 
-### 홈 화면 및 사이트 캡쳐화면 [더보기]()
+### 홈 화면 및 사이트 캡쳐화면 [더보기](https://github.com/yoonwooseong/SpringProject_Movie/tree/master/screen)
 <div>
   <img class="Home" width="1000" alt="Home" title="movieHome"
        src="https://user-images.githubusercontent.com/57824259/84159610-39d96e80-aaa8-11ea-88fe-e8d4618566d3.PNG">
