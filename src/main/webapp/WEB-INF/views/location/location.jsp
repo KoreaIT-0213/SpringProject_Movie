@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <title>영화관 위치정보</title>
-
+	<link rel="shortcut icon" type="image/x-icon" href="${ pageContext.request.contextPath }/resources/img/icon.jpg"/>
 	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/user.css">
 	
 	<style>

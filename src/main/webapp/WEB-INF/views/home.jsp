@@ -4,7 +4,7 @@
 
 <html>
 <head>
-	
+
 	<link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/main.css">
 	<link rel="shortcut icon" type="image/x-icon" href="${ pageContext.request.contextPath }/resources/img/icon.jpg"/>
 	

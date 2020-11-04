@@ -456,7 +456,7 @@ function load_list(){
 		var url="timelist.do";
 		var param="m_name="+movieNm+"&city="+city+"&district="+district+"&date_s="+date_s;
 		//alert(movieNm);
-		sendRequest(url,param,resultFn5 , "get"); 
+		sendRequest(url,param,resultFn5 , "GET"); 
 	}//date
 	
 	function resultFn5() {

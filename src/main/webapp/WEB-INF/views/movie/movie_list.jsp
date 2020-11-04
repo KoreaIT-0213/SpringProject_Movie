@@ -6,8 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>영화 그 이상의 감동. CGW</title>
-
+<title>Night Cinema</title>
+<link rel="shortcut icon" type="image/x-icon" href="${ pageContext.request.contextPath }/resources/img/icon.jpg"/>
 <link rel="stylesheet"
 	href="${ pageContext.request.contextPath }/resources/css/movie_rank.css">
 <link rel="stylesheet"
@@ -82,7 +82,11 @@ keyframes main_bg { 50% {
 %
 {
 opacity
+
+
 :
+
+
 1;
 }
 }
