@@ -6,11 +6,11 @@ function loadDate(){
 	var day=date.getDate();
 	if((month+"").length < 2){
 		month = "0" + month;
-	}
+	} 
 	if((day+"").length < 2){
 		day = "0" + day;
 	}
-	var getDate = year + month + day;
+	var getDate = ""+ year + month + day;
 	return eval(getDate);
 }
 
@@ -31,13 +31,16 @@ function releaseDtStart(){
 	}
 	if((month+"").length < 2){
 		month = "0" + month;
+	} else{
+		month = month;
 	}
 	if((day+"").length < 2){
 		day = "0" + day;
 	}
-	var getDate = year + month + day;
+	var getDate = ""+ year + month + day;
 	return eval(getDate);
 }
+
 //한달 후 날짜 불러오기
 function releaseDtEnd(){
 	var year=date.getFullYear();
@@ -54,7 +57,7 @@ function releaseDtEnd(){
 	if((day+"").length < 2){
 		day = "0" + day;
 	}
-	var getDate = year + month + day;
+	var getDate = ""+ year + month + day;
 	return eval(getDate);
 }
 

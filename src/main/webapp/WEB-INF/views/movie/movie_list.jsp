@@ -1,82 +1,98 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>영화 그 이상의 감동. CGW</title> 
-   
-   <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/movie_rank.css">
-   <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/movie_release.css">
-   <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/movie_query.css">
-   
-   <style type="text/css">
-       
-       body{
-           background-image: url(${ pageContext.request.contextPath }/resources/img/footer_bg.png);
-           background-repeat: repeat; 
-       }
-       
-		#back-top {
-			position: fixed;
-			bottom: 30px;
-			margin-left: -150px;
-		}
+<title>영화 그 이상의 감동. CGW</title>
 
-		#back-top a {
-			width: 108px;
-			display: block;
-			text-align: center;
-			font: 11px/100% Arial, Helvetica, sans-serif;
-			text-transform: uppercase;
-			text-decoration: none;
-			color: #bbb;
-			
-			/* transition */
-			-webkit-transition: 1s;
-			-moz-transition: 1s;
-			transition: 1s;
-		}
-		#back-top a:hover {
-			color: #000;
-		}
-		
-		/* arrow icon (span tag) */
-		#back-top span {
-			width: 108px;
-			height: 108px;
-			display: block;
-			margin-bottom: 7px;
-			background: #ddd url(up-arrow.png) no-repeat center center;
-			
-			/* rounded corners */
-			-webkit-border-radius: 15px;
-			-moz-border-radius: 15px;
-			border-radius: 15px;
-			
-			/* transition */
-			-webkit-transition: 1s;
-			-moz-transition: 1s;
-			transition: 1s;
-		}
-		#back-top a:hover span {
-			background-color: #777;
-		}
-        
-        #header .nav > h2 > img{ width:100%; height:70px;   
-			animation: main_bg 0.7s linear infinite;
-			animation-iteration-count: 2;}
-		@keyframes main_bg{
-		    50% {opacity:0.2;}
-		    100% {opacity:1;}
-		}
-   </style>
-   
-   <script type="text/javascript" src="${ pageContext.request.contextPath }/resources/js/httpRequest.js"></script>
-   <script type="text/javascript" src="${ pageContext.request.contextPath }/resources/js/needDate.js"></script>
-   <script type="text/javascript">
+<link rel="stylesheet"
+	href="${ pageContext.request.contextPath }/resources/css/movie_rank.css">
+<link rel="stylesheet"
+	href="${ pageContext.request.contextPath }/resources/css/movie_release.css">
+<link rel="stylesheet"
+	href="${ pageContext.request.contextPath }/resources/css/movie_query.css">
+
+<style type="text/css">
+body {
+	background-image:
+		url(${ pageContext.request.contextPath }/resources/img/footer_bg.png);
+	background-repeat: repeat;
+}
+
+#back-top {
+	position: fixed;
+	bottom: 30px;
+	margin-left: -150px;
+}
+
+#back-top a {
+	width: 108px;
+	display: block;
+	text-align: center;
+	font: 11px/100% Arial, Helvetica, sans-serif;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #bbb;
+	/* transition */
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
+	transition: 1s;
+}
+
+#back-top a:hover {
+	color: #000;
+}
+
+/* arrow icon (span tag) */
+#back-top span {
+	width: 108px;
+	height: 108px;
+	display: block;
+	margin-bottom: 7px;
+	background: #ddd url(up-arrow.png) no-repeat center center;
+	/* rounded corners */
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	/* transition */
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
+	transition: 1s;
+}
+
+#back-top a:hover span {
+	background-color: #777;
+}
+
+#header .nav>h2>img {
+	width: 100%;
+	height: 70px;
+	animation: main_bg 0.7s linear infinite;
+	animation-iteration-count: 2;
+}
+
+@
+keyframes main_bg { 50% {
+	opacity: 0.2;
+}
+100
+%
+{
+opacity
+:
+1;
+}
+}
+</style>
+
+<script type="text/javascript"
+	src="${ pageContext.request.contextPath }/resources/js/httpRequest.js"></script>
+<script type="text/javascript"
+	src="${ pageContext.request.contextPath }/resources/js/needDate.js"></script>
+<script type="text/javascript">
    
       window.onload=function(){
          load_release_list();
@@ -97,11 +113,12 @@
             
          }
       };
-      
+
       //날짜 비교 
       var date = new Date();
       
       var today = loadDate()-1;//1일에 문제될수있음
+      console.log(today);
       var releaseStart = releaseDtStart();
       var releaseEnd = releaseDtEnd();
 
@@ -146,7 +163,7 @@
            return posters;
       }
       
-      //상영 예정작 목록을 가져오는 함수
+      //성영 예정작 목록을 가져오는 함수
       function load_release_list(){
          //192.168.1.101:9090/vs/list.do
          var url ='http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp';
@@ -208,7 +225,7 @@
          return location.href="movieInfoDetail.do?movieId="+movieId+"&movieSeq="+movieSeq+"&m_name="+encodeURIComponent(m_name);
       }
       
-      //--------------------------BoxOffice------------------------------------
+      //------------------rank----------------------------------------------------------
       function loading_del(){
           var loadingText = document.getElementById("loadingText");
          if( loadingText.children[0] != undefined ){
@@ -275,7 +292,7 @@
       }
       
       function detailRank( releaseDts, title, trailer ){
-         return location.href="movieInfoDetailBoxOffice.do?releaseDts="+releaseDts+"&title="+encodeURIComponent(title)+"&trailer="+trailer;
+         return location.href="movieInfoDetailRank.do?releaseDts="+releaseDts+"&title="+encodeURIComponent(title)+"&trailer="+trailer;
       }
       //---------------------query---------------------------------------------------
       //쿠키 생성
@@ -424,355 +441,428 @@
          }
       }
 
-   </script> 
+   </script>
 </head>
 <body>
 
-    <!-- header -->
-		<div id="header" style="z-index:3;">
-			
-			<div class="gnb">
-				<ul>
-					<c:if test="${empty sessionScope.user}">
-						<li><a href="login_form.do?seat=0">로그인</a></li>
-						<li><a href="register_form.do">회원가입</a></li>
-					</c:if>
-					
-					<c:if test="${not empty sessionScope.user}">
-						<li style='color:white;'><span style='font-weight: bold;'>${ sessionScope.user.name }</span> 님 환영합니다.</li>
-						<li><a href="logout.do">로그아웃</a></li>
-						<li><a href="mypage.do?l_idx=${ sessionScope.user.l_idx }">마이페이지</a></li>
-					</c:if>
-				</ul>
-			</div>
-			
-			<div class="nav">
-				<h1 id="nav_left"><img src="${ pageContext.request.contextPath }/resources/img/logo_test.png" onclick="location.href='/movie/'"></h1>
-				<h2><img src="${ pageContext.request.contextPath }/resources/img/nav_logo.png" onclick="location.href='/movie/'"></h2>
-				<ul>
-					<li><a href="movieReleaseList.do">영화</a></li>
-					<li><a href="ticketing.do">예매</a></li>
-					<li><a href="location.do">영화관</a></li>
-					<li><a href="review.do">커뮤니티</a></li>				
-				</ul>
-				<h1 id="nav_right"><img src="${ pageContext.request.contextPath }/resources/img/logo_test2.png"></h1>
-			</div>
+	<!-- header -->
+	<div id="header" style="z-index: 3;">
+
+		<div class="gnb">
+			<ul>
+				<c:if test="${empty sessionScope.user}">
+					<li><a href="login_form.do?seat=0">로그인</a></li>
+					<li><a href="register_form.do">회원가입</a></li>
+				</c:if>
+
+				<c:if test="${not empty sessionScope.user}">
+					<li style='color: white;'><span style='font-weight: bold;'>${ sessionScope.user.name }</span>
+						님 환영합니다.</li>
+					<li><a href="logout.do">로그아웃</a></li>
+					<li><a href="mypage.do?l_idx=${ sessionScope.user.l_idx }">마이페이지</a></li>
+				</c:if>
+			</ul>
 		</div>
+
+		<div class="nav">
+			<h1 id="nav_left">
+				<img
+					src="${ pageContext.request.contextPath }/resources/img/logo_test.png"
+					onclick="location.href='/movie/'">
+			</h1>
+			<h2>
+				<img
+					src="${ pageContext.request.contextPath }/resources/img/nav_logo.png"
+					onclick="location.href='/movie/'">
+			</h2>
+			<ul>
+				<li><a href="movieReleaseList.do">영화</a></li>
+				<li><a href="ticketing.do">예매</a></li>
+				<li><a href="location.do">영화관</a></li>
+				<li><a href="review.do">커뮤니티</a></li>
+			</ul>
+			<h1 id="nav_right">
+				<img
+					src="${ pageContext.request.contextPath }/resources/img/logo_test2.png">
+			</h1>
+		</div>
+	</div>
 	<!-- header 끝 -->
-	
+
 	<%-- <jsp:include page="../header.jsp"/> --%>
 
-    <div id="container">
+	<div id="container">
 		<div id="container_inner">
 			<div id="page_title">전체 영화</div>
-      
-      <div id="movie_list_nav">
-         <div class="movie_list_nav1"><a href="javascript:void(0);" onclick="boxOfficeView();">박스오피스</a></div><!-- /movie/movieRankList.do -->
-         <div class="movie_list_nav2"><a href="javascript:void(0);" onclick="scheduledScreenView();">상영 예정작</a></div><!-- /movie/movieReleaseList.do -->
-         <div class="movie_list_nav3"><a href="javascript:void(0);" onclick="queryMovie();">영화 검색</a></div><!-- /movie/movieQuery.do -->
-      </div>
-      
-      <div id="contents_release">
-         <div id="movie_chart_release">
-            <div id="select_movie_lists_release">
-               <c:forEach var="n" begin="0" end="7" step="1">
-                  <div id="movie_release_list_${n}">
-                     <input type="hidden" id="movie_release_movieId_${n}">
-                     <input type="hidden" id="movie_release_movieSeq_${n}">
-                     <input type="hidden" id="movie_release_title_data_${n}">
-                     
-                     
-                     <div id="movie_release_poster_${n}">
-                        <div class="poster_box">
-                           <img id="movie_release_poster_${n}_img">
-                           <div class="poster_hover">
-                              <div class="poster_hover_text">
-                                 <div class="poster_hover_text_2"><div id="movie_action_button_text_${n}"></div></div>      
-                                 <div class="poster_hover_text_1"><a href="javascript:void(0);" onclick="detail(movie_release_movieId_${n}.value, movie_release_movieSeq_${n}.value, movie_release_title_data_${n}.value);">상세보기</a></div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     
-                     <div class="movie_title_box">
-                        <div id="movie_release_title_${n}"></div>
-                     </div>  
-                     
-                     <div class="movie_infos">
-                     	<div class="movie_release_rel">
-	                        <div id="movie_release_relDate_${n}"></div>
-                     	</div>
-                        <div id="movie_release_runtime_${n}"></div>
-                     </div>
-                     
-                  </div>
-               </c:forEach>
-            </div>
-            
-            <div id="select_movie_lists_release_2">
-               <c:forEach var="n" begin="8" end="15" step="1">
-                  <div id="movie_release_list_${n}">
-                     <input type="hidden" id="movie_release_movieId_${n}">
-                     <input type="hidden" id="movie_release_movieSeq_${n}">
-                     <input type="hidden" id="movie_release_title_data_${n}">
-                     
-                     <div id="movie_release_poster_${n}">
-                        <div class="poster_box">
-                           <img id="movie_release_poster_${n}_img">
-                           <div class="poster_hover">
-                              <div class="poster_hover_text">
-                                 <div class="poster_hover_text_2"><div id="movie_action_button_text_${n}"></div></div>      
-                                 <div class="poster_hover_text_1"><a href="javascript:void(0);" onclick="detail(movie_release_movieId_${n}.value, movie_release_movieSeq_${n}.value, movie_release_title_data_${n}.value);">상세보기</a></div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     
-                     <div class="movie_title_box">
-                        <div id="movie_release_title_${n}"></div> 
-                     </div>
-                     
-                     <div class="movie_infos">
-                     	<div class="movie_release_rel">
-	                        <div id="movie_release_relDate_${n}"></div>
-                     	</div>
-                        <div id="movie_release_runtime_${n}"></div>
-                     </div>
 
-                  </div>
-               </c:forEach>
-            </div>
-            
-            <div id="select_movie_lists_release_3">
-               <c:forEach var="n" begin="16" end="23" step="1">
-                  <div id="movie_release_list_${n}">
-                     <input type="hidden" id="movie_release_movieId_${n}">
-                     <input type="hidden" id="movie_release_movieSeq_${n}">
-                     <input type="hidden" id="movie_release_title_data_${n}">
-                     
-                     <div id="movie_release_poster_${n}">
-                        <div class="poster_box">
-                           <img id="movie_release_poster_${n}_img">
-                           <div class="poster_hover">
-                              <div class="poster_hover_text">
-                                 <div class="poster_hover_text_2"><div id="movie_action_button_text_${n}"></div></div>      
-                                 <div class="poster_hover_text_1"><a href="javascript:void(0);" onclick="detail(movie_release_movieId_${n}.value, movie_release_movieSeq_${n}.value,  movie_release_title_data_${n}.value);">상세보기</a></div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     
-                     <div class="movie_title_box">
-                        <div id="movie_release_title_${n}"></div>
-                     </div>
-                     
-                     <div class="movie_infos">
-                     	<div class="movie_release_rel">
-	                        <div id="movie_release_relDate_${n}"></div>
-                     	</div>
-                        <div id="movie_release_runtime_${n}"></div>
-                     </div>
+			<div id="movie_list_nav">
+				<div class="movie_list_nav1">
+					<a href="javascript:void(0);" onclick="boxOfficeView();">박스오피스</a>
+				</div>
+				<!-- /movie/movieRankList.do -->
+				<div class="movie_list_nav2">
+					<a href="javascript:void(0);" onclick="scheduledScreenView();">상영
+						예정작</a>
+				</div>
+				<!-- /movie/movieReleaseList.do -->
+				<div class="movie_list_nav3">
+					<a href="javascript:void(0);" onclick="queryMovie();">영화 검색</a>
+				</div>
+				<!-- /movie/movieQuery.do -->
+			</div>
 
-                  </div>
-               </c:forEach>
-            </div>
-            
-            <div id="select_movie_lists_release_4">
-               <c:forEach var="n" begin="24" end="31" step="1">
-                  <div id="movie_release_list_${n}">
-                     <input type="hidden" id="movie_release_movieId_${n}">
-                     <input type="hidden" id="movie_release_movieSeq_${n}">
-                     <input type="hidden" id="movie_release_title_data_${n}">
-                     
-                     <div id="movie_release_poster_${n}">
-                        <div class="poster_box">
-                           <img id="movie_release_poster_${n}_img">
-                           <div class="poster_hover">
-                              <div class="poster_hover_text">
-                                 <div class="poster_hover_text_2"><div id="movie_action_button_text_${n}"></div></div>      
-                                 <div class="poster_hover_text_1"><a href="javascript:void(0);" onclick="detail(movie_release_movieId_${n}.value, movie_release_movieSeq_${n}.value,  movie_release_title_data_${n}.value);">상세보기</a></div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     
-                     <div class="movie_title_box">
-                        <div id="movie_release_title_${n}"></div>
-                     </div>
-                     
-                     <div class="movie_infos">
-                     	<div class="movie_release_rel">
-	                        <div id="movie_release_relDate_${n}"></div>
-                     	</div>
-                        <div id="movie_release_runtime_${n}"></div>
-                     </div>
-
-                  </div>
-               </c:forEach>
-            </div>
-            
-            <div id="movie_release_list_moreSee">
-            	<!-- <input type="button" value="더보기" onclick="more_list();"> -->
-             	<button class="btn-1" onclick="more_list();">see more</button>
-            </div>
-         </div>
-      </div>
-      
-      <div id="contents_rank">
-         <div id="contents_rank_title">현재 상영작 <span>TOP 10</span></div>
-         <div id="loadingText"><h3>Loading...</h3></div>
-         <div id="select_movie_list">
-            <ul id="movie_list">
-            
-              
-               <c:forEach var="n" begin="0" end="9" step="1">
-                  <li id="movie_list_${n}">
-                     <div id="movie_rank_box_one">
-                        <input type="hidden" id="movie_openDt_${n}">
-                        <input type="hidden" id="movie_movieNm_${n}">
-                        
-                        
-                        <div id="movie_rank_poster_${n}">
-                           <div class="poster_box">
-                              <img id="movie_rank_poster_${n}_img">
-                              <div class="poster_hover">
-                                 <div class="poster_hover_text">
-                                    <div class="poster_hover_text_2"><a id="ticket${n}">예매하기</a></div>      
-                                    <div class="poster_hover_text_1"><a href="javascript:void(0);" onclick="detailRank(movie_openDt_${n}.value, movie_movieNm_${n}.value, movie_trailer_src_${n}.value);">상세보기</a></div>
-                                 </div>   
-                              </div>
-                           </div>
-                        </div>
-                        
-                        <div class="movie_title_box">
-                        <div>
-                        <c:choose>
-	                        <c:when test="${n eq 0 }">
-	                        <div style="width:35px; float:left;" id="movie_rank_rank_${n}"></div>
-	                        <img style="width:25px; height:32px;" src="${ pageContext.request.contextPath }/resources/img/maedal_one.png">
-	                        </c:when>
-	                        
-	                         <c:when test="${n eq 1 }">
-	                        <div style="width:35px; float:left;" id="movie_rank_rank_${n}"></div>
-	                        <img style="width:25px; height:32px;" src="${ pageContext.request.contextPath }/resources/img/maedal_two.png">
-	                        </c:when>
-	                        
-	                         <c:when test="${n eq 2 }">
-	                        <div style="width:35px; float:left;" id="movie_rank_rank_${n}"></div>
-	                        <img style="width:25px; height:32px;" src="${ pageContext.request.contextPath }/resources/img/maedal_three.png">
-	                        </c:when>
-	                        
-	                        <c:otherwise>
-	                        <div style="width:35px; float:left;" id="movie_rank_rank_${n}"></div>
-	                        </c:otherwise>
-	                    </c:choose>
-                        </div>
-                           <div id="movie_rank_movieNm_${n}"></div>
-                        </div>
-                        
-                        <div class="movie_rank_infos">
-                           <div id="movie_rank_salesShare_${n}"></div>
-                           <div id="movie_rank_audiAcc_${n}"></div>
-                        </div>
-                        <input type="hidden" id="movie_rank_openDt_${n}">
-                        <input type="hidden" id="movie_trailer_src_${n}">
-                     </div>
-                  </li>
-               </c:forEach>
-            </ul>
-            
+			<div id="contents_release">
+				<div id="movie_chart_release">
+					<div id="select_movie_lists_release">
+						<c:forEach var="n" begin="0" end="7" step="1">
+							<div id="movie_release_list_${n}">
+								<input type="hidden" id="movie_release_movieId_${n}"> <input
+									type="hidden" id="movie_release_movieSeq_${n}"> <input
+									type="hidden" id="movie_release_title_data_${n}">
 
 
-            
-         </div>
-      </div>
-      
-      <div id="contents_query">
-         
-         <div id="question_box" style="z-index:3;">
-               <div id="recent_query_box">
-                  <div id="recent_query_title">최근 검색어 : </div>
-                  <c:forEach var="i" begin="0" end="2" step="1">
-                     <div id="recent_querys">
-                        <form>
-                           <input id="recent_query_data_${i}" value="" type="hidden">
-                           <a id="recent_query_${i}" href="javascript:void(0);" onclick="load_Query2(recent_query_data_${i}.value);"></a>
-                           <div id="del_img_box">
-                              <img id="del_icon_${i}" onclick="recent_del(${i});" style="width:20px" src="${ pageContext.request.contextPath }/resources/img/iconDelwhite.png">
-                           </div>
-                        </form>
-                        
-                     </div>
-                  </c:forEach>
-               </div>
-            
-            <div id="query_input_box">
-               <form id="search_form" name="searchForm" onsubmit="return false;" method="post">
-                  <div id="query_widnow">
-                     <img id="query_icon" src="${ pageContext.request.contextPath }/resources/img/queryicon.png">
-                     <input name="query" id="query" autocomplete="off" onkeypress="inputEnter(this.form);" style="border:none">
-                     <input id="btn" type="button" value="검색" onclick="load_Query(this.form);">
-                  </div>
-                  
-                  <div id="searchText"><h3>어떤 영화가 궁금한가요? </h3></div>
-               </form>
-            </div>
-         </div>
-         
-         <div id="movie_query_list_container">
-            <ul id="movie_query_list">
-               <c:forEach var="n" begin="0" end="9" step="1">
-                  <li id="movie_query_list_${n}">
-                     
-                     <div id="result_inv_movie_${n}">
-                        <div id="movie_query_box_one">
-                           <div class="movie_query_result_box_${n}">
-                              <input type="hidden" id="movie_movieId_${n}">
-                              <input type="hidden" id="movie_movieSeq_${n}">
-                              <input type="hidden" id="movie_query_title_data_${n}">
-                              
-                              <div id="movie_query_list_title_${n}"></div>
-                              <div id="movie_query_list_poster_${n}">
-                                 <div class="poster_box"> 
-                                    <img id="movie_query_list_poster_${n}_img">
-                                    <div class="poster_hover">
-                                       <div class="poster_hover_text">   
-                                          <div class="poster_hover_text_3"><a href="javascript:void(0);" onclick="detail(movie_movieId_${n}.value, movie_movieSeq_${n}.value, movie_query_title_data_${n}.value);">상세보기</a></div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              
-                              <div class="movie_query_rel_run">
-                                  <div class="movie_query_rel">
-		                              <div id="movie_query_list_relDate_${n}"></div>
-                                  </div>
-	                              <div id="movie_query_list_runtime_${n}"></div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </li>
-               </c:forEach>
-            </ul>
-         </div>
-      	</div>
-      </div>
+								<div id="movie_release_poster_${n}">
+									<div class="poster_box">
+										<img id="movie_release_poster_${n}_img">
+										<div class="poster_hover">
+											<div class="poster_hover_text">
+												<div class="poster_hover_text_2">
+													<div id="movie_action_button_text_${n}"></div>
+												</div>
+												<div class="poster_hover_text_1">
+													<a href="javascript:void(0);"
+														onclick="detail(movie_release_movieId_${n}.value, movie_release_movieSeq_${n}.value, movie_release_title_data_${n}.value);">상세보기</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 
-   </div>
-   
-    <div id="footer_box">
-			<div id="footer">
-				<%-- <div class="f_bg"><img src="${ pageContext.request.contextPath }/resources/img/footer_bg.png"></div> --%>
-				<div class="f_txt">
-					<p class="f_logo"><img src="${ pageContext.request.contextPath }/resources/img/logo_test.png"></p>
-					<address>서울특별시 마포구 서강로 136 아이비티워 2층,3층</address>
-					<p class="team1">2조 Spring Project Movie</p>
-					<p class="team2">민형, 성수, 우성, 선영, 원경, 유진</p>
+								<div class="movie_title_box">
+									<div id="movie_release_title_${n}"></div>
+								</div>
+
+								<div class="movie_infos">
+									<div class="movie_release_rel">
+										<div id="movie_release_relDate_${n}"></div>
+									</div>
+									<div id="movie_release_runtime_${n}"></div>
+								</div>
+
+							</div>
+						</c:forEach>
+					</div>
+
+					<div id="select_movie_lists_release_2">
+						<c:forEach var="n" begin="8" end="15" step="1">
+							<div id="movie_release_list_${n}">
+								<input type="hidden" id="movie_release_movieId_${n}"> <input
+									type="hidden" id="movie_release_movieSeq_${n}"> <input
+									type="hidden" id="movie_release_title_data_${n}">
+
+								<div id="movie_release_poster_${n}">
+									<div class="poster_box">
+										<img id="movie_release_poster_${n}_img">
+										<div class="poster_hover">
+											<div class="poster_hover_text">
+												<div class="poster_hover_text_2">
+													<div id="movie_action_button_text_${n}"></div>
+												</div>
+												<div class="poster_hover_text_1">
+													<a href="javascript:void(0);"
+														onclick="detail(movie_release_movieId_${n}.value, movie_release_movieSeq_${n}.value, movie_release_title_data_${n}.value);">상세보기</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="movie_title_box">
+									<div id="movie_release_title_${n}"></div>
+								</div>
+
+								<div class="movie_infos">
+									<div class="movie_release_rel">
+										<div id="movie_release_relDate_${n}"></div>
+									</div>
+									<div id="movie_release_runtime_${n}"></div>
+								</div>
+
+							</div>
+						</c:forEach>
+					</div>
+
+					<div id="select_movie_lists_release_3">
+						<c:forEach var="n" begin="16" end="23" step="1">
+							<div id="movie_release_list_${n}">
+								<input type="hidden" id="movie_release_movieId_${n}"> <input
+									type="hidden" id="movie_release_movieSeq_${n}"> <input
+									type="hidden" id="movie_release_title_data_${n}">
+
+								<div id="movie_release_poster_${n}">
+									<div class="poster_box">
+										<img id="movie_release_poster_${n}_img">
+										<div class="poster_hover">
+											<div class="poster_hover_text">
+												<div class="poster_hover_text_2">
+													<div id="movie_action_button_text_${n}"></div>
+												</div>
+												<div class="poster_hover_text_1">
+													<a href="javascript:void(0);"
+														onclick="detail(movie_release_movieId_${n}.value, movie_release_movieSeq_${n}.value,  movie_release_title_data_${n}.value);">상세보기</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="movie_title_box">
+									<div id="movie_release_title_${n}"></div>
+								</div>
+
+								<div class="movie_infos">
+									<div class="movie_release_rel">
+										<div id="movie_release_relDate_${n}"></div>
+									</div>
+									<div id="movie_release_runtime_${n}"></div>
+								</div>
+
+							</div>
+						</c:forEach>
+					</div>
+
+					<div id="select_movie_lists_release_4">
+						<c:forEach var="n" begin="24" end="31" step="1">
+							<div id="movie_release_list_${n}">
+								<input type="hidden" id="movie_release_movieId_${n}"> <input
+									type="hidden" id="movie_release_movieSeq_${n}"> <input
+									type="hidden" id="movie_release_title_data_${n}">
+
+								<div id="movie_release_poster_${n}">
+									<div class="poster_box">
+										<img id="movie_release_poster_${n}_img">
+										<div class="poster_hover">
+											<div class="poster_hover_text">
+												<div class="poster_hover_text_2">
+													<div id="movie_action_button_text_${n}"></div>
+												</div>
+												<div class="poster_hover_text_1">
+													<a href="javascript:void(0);"
+														onclick="detail(movie_release_movieId_${n}.value, movie_release_movieSeq_${n}.value,  movie_release_title_data_${n}.value);">상세보기</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="movie_title_box">
+									<div id="movie_release_title_${n}"></div>
+								</div>
+
+								<div class="movie_infos">
+									<div class="movie_release_rel">
+										<div id="movie_release_relDate_${n}"></div>
+									</div>
+									<div id="movie_release_runtime_${n}"></div>
+								</div>
+
+							</div>
+						</c:forEach>
+					</div>
+
+					<div id="movie_release_list_moreSee">
+						<!-- <input type="button" value="더보기" onclick="more_list();"> -->
+						<button class="btn-1" onclick="more_list();">see more</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="contents_rank">
+				<div id="contents_rank_title">
+					현재 상영작 <span>TOP 10</span>
+				</div>
+				<div id="loadingText">
+					<h3>Loading...</h3>
+				</div>
+				<div id="select_movie_list">
+					<ul id="movie_list">
+
+
+						<c:forEach var="n" begin="0" end="9" step="1">
+							<li id="movie_list_${n}">
+								<div id="movie_rank_box_one">
+									<input type="hidden" id="movie_openDt_${n}"> <input
+										type="hidden" id="movie_movieNm_${n}">
+
+
+									<div id="movie_rank_poster_${n}">
+										<div class="poster_box">
+											<img id="movie_rank_poster_${n}_img">
+											<div class="poster_hover">
+												<div class="poster_hover_text">
+													<div class="poster_hover_text_2">
+														<a id="ticket${n}">예매하기</a>
+													</div>
+													<div class="poster_hover_text_1">
+														<a href="javascript:void(0);"
+															onclick="detailRank(movie_openDt_${n}.value, movie_movieNm_${n}.value, movie_trailer_src_${n}.value);">상세보기</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="movie_title_box">
+										<div>
+											<c:choose>
+												<c:when test="${n eq 0 }">
+													<div style="width: 35px; float: left;"
+														id="movie_rank_rank_${n}"></div>
+													<img style="width: 25px; height: 32px;"
+														src="${ pageContext.request.contextPath }/resources/img/maedal_one.png">
+												</c:when>
+
+												<c:when test="${n eq 1 }">
+													<div style="width: 35px; float: left;"
+														id="movie_rank_rank_${n}"></div>
+													<img style="width: 25px; height: 32px;"
+														src="${ pageContext.request.contextPath }/resources/img/maedal_two.png">
+												</c:when>
+
+												<c:when test="${n eq 2 }">
+													<div style="width: 35px; float: left;"
+														id="movie_rank_rank_${n}"></div>
+													<img style="width: 25px; height: 32px;"
+														src="${ pageContext.request.contextPath }/resources/img/maedal_three.png">
+												</c:when>
+
+												<c:otherwise>
+													<div style="width: 35px; float: left;"
+														id="movie_rank_rank_${n}"></div>
+												</c:otherwise>
+											</c:choose>
+										</div>
+										<div id="movie_rank_movieNm_${n}"></div>
+									</div>
+
+									<div class="movie_rank_infos">
+										<div id="movie_rank_salesShare_${n}"></div>
+										<div id="movie_rank_audiAcc_${n}"></div>
+									</div>
+									<input type="hidden" id="movie_rank_openDt_${n}"> <input
+										type="hidden" id="movie_trailer_src_${n}">
+								</div>
+							</li>
+						</c:forEach>
+					</ul>
+
+
+
+
+				</div>
+			</div>
+
+			<div id="contents_query">
+
+				<div id="question_box" style="z-index: 3;">
+					<div id="recent_query_box">
+						<div id="recent_query_title">최근 검색어 :</div>
+						<c:forEach var="i" begin="0" end="2" step="1">
+							<div id="recent_querys">
+								<form>
+									<input id="recent_query_data_${i}" value="" type="hidden">
+									<a id="recent_query_${i}" href="javascript:void(0);"
+										onclick="load_Query2(recent_query_data_${i}.value);"></a>
+									<div id="del_img_box">
+										<img id="del_icon_${i}" onclick="recent_del(${i});"
+											style="width: 20px"
+											src="${ pageContext.request.contextPath }/resources/img/iconDelwhite.png">
+									</div>
+								</form>
+
+							</div>
+						</c:forEach>
+					</div>
+
+					<div id="query_input_box">
+						<form id="search_form" name="searchForm" onsubmit="return false;"
+							method="post">
+							<div id="query_widnow">
+								<img id="query_icon"
+									src="${ pageContext.request.contextPath }/resources/img/queryicon.png">
+								<input name="query" id="query" autocomplete="off"
+									onkeypress="inputEnter(this.form);" style="border: none">
+								<input id="btn" type="button" value="검색"
+									onclick="load_Query(this.form);">
+							</div>
+
+							<div id="searchText">
+								<h3>어떤 영화가 궁금한가요?</h3>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div id="movie_query_list_container">
+					<ul id="movie_query_list">
+						<c:forEach var="n" begin="0" end="9" step="1">
+							<li id="movie_query_list_${n}">
+
+								<div id="result_inv_movie_${n}">
+									<div id="movie_query_box_one">
+										<div class="movie_query_result_box_${n}">
+											<input type="hidden" id="movie_movieId_${n}"> <input
+												type="hidden" id="movie_movieSeq_${n}"> <input
+												type="hidden" id="movie_query_title_data_${n}">
+
+											<div id="movie_query_list_title_${n}"></div>
+											<div id="movie_query_list_poster_${n}">
+												<div class="poster_box">
+													<img id="movie_query_list_poster_${n}_img">
+													<div class="poster_hover">
+														<div class="poster_hover_text">
+															<div class="poster_hover_text_3">
+																<a href="javascript:void(0);"
+																	onclick="detail(movie_movieId_${n}.value, movie_movieSeq_${n}.value, movie_query_title_data_${n}.value);">상세보기</a>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="movie_query_rel_run">
+												<div class="movie_query_rel">
+													<div id="movie_query_list_relDate_${n}"></div>
+												</div>
+												<div id="movie_query_list_runtime_${n}"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</c:forEach>
+					</ul>
 				</div>
 			</div>
 		</div>
-	
+
+	</div>
+
+	<div id="footer_box">
+		<div id="footer">
+			<%-- <div class="f_bg"><img src="${ pageContext.request.contextPath }/resources/img/footer_bg.png"></div> --%>
+			<div class="f_txt">
+				<p class="f_logo">
+					<img
+						src="${ pageContext.request.contextPath }/resources/img/logo_test.png">
+				</p>
+				<address>서울특별시 마포구 서강로 136 아이비티워 2층,3층</address>
+				<p class="team1">2조 Spring Project Movie</p>
+				<p class="team2">민형, 성수, 우성, 선영, 원경, 유진</p>
+			</div>
+		</div>
+	</div>
+
 
 </body>
 </html>

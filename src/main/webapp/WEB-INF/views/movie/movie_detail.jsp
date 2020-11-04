@@ -46,6 +46,8 @@
          }
       };
       
+      
+      
       //여러개 포스터 잘라쓰기
       function spPoster(inPosters) {
          
